@@ -1,6 +1,6 @@
-# Vue 3 + Vite
+# My Vite-powered Restaurant-Order-Application
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a template created from me, so that in the future I can have quick restaurant-ordering-applications. It is using Vue 3 with Vite and PrimeVue as UI-Library. I was using the Options API here, as it was easier to get used to Vue.js and is preferred for rather small applications like this one.
 
 ## Recommended IDE Setup
 

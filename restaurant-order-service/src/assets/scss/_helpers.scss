@@ -1,0 +1,38 @@
+.text-center {
+   text-align: center;
+}
+
+.sr-only {
+   @include sr-only;
+}
+
+.list--unstyled {
+   @include list--unstyled;
+}
+
+.hidden {
+   display: none;
+}
+
+.margin-top {
+   margin-top: 30px;
+}
+
+.margin-block {
+   margin-block: 3em;
+}
+
+.padding-block {
+   padding-block: 3em;
+}
+
+.fade-animation {
+   opacity: 0;
+   transform: translate(0, 50px);
+   transition: transform .3s ease-in, opacity 0.3s ease-in;
+}
+
+.fade-in {
+   opacity: 1;
+   transform: translate(0, 0);
+}
