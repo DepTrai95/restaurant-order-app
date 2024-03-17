@@ -1,6 +1,8 @@
 <template>
   <li>
-    <router-link :to="link">{{ label }}</router-link>
+    <router-link :class="style" :to="link">
+      <font-awesome-icon :icon="icon" class="mr-2" />{{ label }}
+    </router-link>
   </li>
 </template>
 
@@ -15,15 +17,23 @@ export default {
       type: String,
       required: true,
     },
+    style: {
+      type: String,
+      required: false,
+    },
+    icon: {
+      type: String,
+      required: false,
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.active-route {
-  //wie löst man das mit den routes
+a {
+  color: $color-white;
   font-weight: 500;
+  text-decoration: none;
+  width: 100%;
 }
-
 </style>

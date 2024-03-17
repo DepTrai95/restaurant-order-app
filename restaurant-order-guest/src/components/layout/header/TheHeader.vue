@@ -1,5 +1,6 @@
 <template>
-   <header>
+   <header class="header">
+      <Sidebar></Sidebar>
       <Menubar mobileActive="false" :model="items">
          <template #item="{ item, props }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
@@ -14,7 +15,12 @@
 </template>
 
 <script>
+import Sidebar from '../sidebar/Sidebar.vue';
+
 export default {
+   components: {
+      Sidebar,
+   },
    data() {
       return {
          isMobile: '',
@@ -73,8 +79,16 @@ export default {
 </script>
 
 <style lang="scss">
+.header {
+   position: relative;
+}
+
 .p-menubar {
    justify-content: flex-end;
+   
+   @include for-tablet-landscape-down {
+      font-size: 2.4rem !important;
+   }
 
    .ml-2 {
       margin-left: .5rem;

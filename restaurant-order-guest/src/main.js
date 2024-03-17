@@ -7,18 +7,22 @@ app.use(router);
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(fas);
+library.add(fas, faFacebook, faInstagram);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 // PrimeVue
 // import "primeicons/primeicons.css";
+import "primeflex/primeflex.css";
 import 'primevue/resources/themes/lara-dark-pink/theme.css';
 import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
-import Menubar from 'primevue/menubar';
+import Menubar from 'primevue/menubar'; 
+import Sidebar from 'primevue/sidebar';
+
 
 app.use(PrimeVue, {
    ripple: true,
@@ -26,6 +30,6 @@ app.use(PrimeVue, {
 app.component('Button', Button);
 app.component('Card', Card);
 app.component('Menubar', Menubar);
-
+app.component('Sidebar', Sidebar);
 
 app.mount('#app');
