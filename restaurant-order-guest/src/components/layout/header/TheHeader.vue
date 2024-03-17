@@ -85,9 +85,11 @@ export default {
 
 .p-menubar {
    justify-content: flex-end;
+   padding: 1.5rem;
    
-   @include for-tablet-landscape-down {
+   @include for-phone-only {
       font-size: 2.4rem !important;
+      padding: 1rem;
    }
 
    .ml-2 {
