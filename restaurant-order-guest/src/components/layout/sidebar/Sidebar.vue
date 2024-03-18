@@ -10,35 +10,35 @@
                   </Button>
                </div>
                <div class="overflow-y-auto">
-                  <ul class="list-none p-3 m-0 sidebar-list">
+                  <ul class="list-none px-3 py-4 m-0 sidebar-list">
                      <li>
                         <ul class="list-none p-0 m-0 overflow-hidden">
                            <LinkRouter
-                              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                              class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
                               link="/" label="Home" icon="house" @click="visible = false">
                            </LinkRouter>
                            <LinkRouter
-                              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                              class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
                               link="/opening-hours" label="Öffnungszeiten" icon="clock" @click="visible = false">
                            </LinkRouter>
                            <LinkRouter
-                              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                              class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
                               link="/allergies" label="Allergene" icon="fa-wheat-awn" @click="visible = false">
                            </LinkRouter>
-                           <li class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                           <li class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
                               <Button @click="shareApp()">
                                  <font-awesome-icon icon="share-nodes" class="mr-2" />
                                  <span class="font-medium">App teilen</span>
                               </Button>
                            </li>
-                           <li class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
+                           <li class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
                               <Button @click="refreshPage()">
                                  <font-awesome-icon icon="fa-refresh" class="mr-2" />
                                  <span class="font-medium">Neu laden</span>
                               </Button>
                            </li>
                            <LinkRouter
-                              class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                              class="flex align-items-center cursor-pointer px-3 py-4 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
                               link="/settings" label="Einstellungen" icon="cog" @click="visible = false">
                            </LinkRouter>
                         </ul>
@@ -48,7 +48,7 @@
                </div>
                <div class="mt-auto">
                   <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
-                  <a class="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
+                  <a class="m-3 flex align-items-center cursor-pointer px-3 py-4 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple"
                      href="https://deptrai.de">
                      <span class="font-bold">Developed by DepTrai</span>
                   </a>
@@ -89,6 +89,11 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       z-index: 1;
+
+   >.p-button {
+         @include responsive-font-size(2.2rem, 2.4rem);
+         width: 5rem;
+      }
    }
    
    .sidebar-list .p-button {
@@ -102,8 +107,16 @@ export default {
    }
 </style>
 
-<style>
+<style lang="scss">
 .p-sidebar {
    width: 30rem;
+
+   li li {
+      @include responsive-font-size(2rem, 2.4rem); 
+
+   }
+   .p-button {
+      @include responsive-font-size(2rem, 2.4rem);
+   }
 }
 </style>

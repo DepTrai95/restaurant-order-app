@@ -8,9 +8,9 @@ app.use(router);
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(fas, faFacebook, faInstagram);
+library.add(fas, faFacebook, faInstagram, faTiktok);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 // PrimeVue

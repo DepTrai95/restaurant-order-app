@@ -37,7 +37,7 @@
             </div>
          </template>
       </Card>
-      <Card class="mt-4 inverted">
+      <Card class="mt-6 inverted">
          <template #title>Zahlung bei Abholung</template>
          <template #content>
             <ul class="payment-icon-list">

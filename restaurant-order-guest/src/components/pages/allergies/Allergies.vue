@@ -14,23 +14,21 @@
       </Card>
       <Card class="mt-4">
          <template #content>
-            <div class="grid-2">
-               <div class="grid-item">
-                  <h2 class="h4">Zusatzstoffe</h2>
-                  <div class="zusatzstoff-container">
-                     <span v-for="zusatzstoff in zusatzstoffe" :key="zusatzstoff.nummer">
-                        {{ zusatzstoff.nummer }} {{ zusatzstoff.name }}
-                     </span>
-                  </div>
-               </div>
-               <div class="grid-item">
-                  <h2 class="h4">Allergene</h2>
-                  <div class="allergies-container">
-                     <span v-for="allergie in allergene" :key="allergie.id">
-                        {{ allergie.letter }} {{ allergie.name }}
-                     </span>
-                  </div>
-               </div>
+            <h2 class="h4">Zusatzstoffe</h2>
+            <div class="zusatzstoff-container">
+               <span v-for="zusatzstoff in zusatzstoffe" :key="zusatzstoff.nummer">
+                  {{ zusatzstoff.nummer }} {{ zusatzstoff.name }}
+               </span>
+            </div>
+         </template>
+      </Card>
+      <Card class="mt-4">
+         <template #content>
+            <h2 class="h4">Allergene</h2>
+            <div class="allergies-container">
+               <span v-for="allergie in allergene" :key="allergie.id">
+                  {{ allergie.letter }} {{ allergie.name }}
+               </span>
             </div>
          </template>
       </Card>
@@ -44,15 +42,15 @@ export default {
          zusatzstoffe: [
             {
                "nummer": 1,
-               "name": "Konservierungsst."
+               "name": "Konservierungsstoffe"
             },
             {
                "nummer": 2,
-               "name": "Geschmacksver."
+               "name": "Geschmacksverstärker"
             },
             {
                "nummer": 3,
-               "name": "Antioxidationm."
+               "name": "Antioxidationsmittel"
             },
             {
                "nummer": 4,
@@ -118,7 +116,7 @@ export default {
             },
             {
                "letter": 'G',
-               "name": "Milch und Milcherz."
+               "name": "Milch und Milcherzeugnisse"
             },
             {
                "letter": 'H',

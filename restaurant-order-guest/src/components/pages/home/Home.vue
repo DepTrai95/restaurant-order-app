@@ -54,6 +54,11 @@ export default {
          ],
          externLink: [
             {
+               icon: 'globe',
+               category: 'Unsere Website',
+               link: 'https://aroi-dresden.de'
+            },
+            {
                icon: 'fa-brands fa-facebook',
                category: 'Facebook',
                link: 'https://www.facebook.com/anamit.restaurant/'
@@ -61,6 +66,11 @@ export default {
             {
                icon: 'fa-brands fa-instagram',
                category: 'Instagram',
+               link: 'https://www.instagram.com/ramen1974dresden/'
+            },
+            {
+               icon: 'fa-brands fa-tiktok',
+               category: 'TikTok',
                link: 'https://www.instagram.com/ramen1974dresden/'
             },
          ]
