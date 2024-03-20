@@ -97,6 +97,22 @@ export default {
    }
 }
 
+.p-menuitem-content {
+   @media (max-width: (700px - 1px)) {
+      align-items: center;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      height: 48px;
+      transition: background-color .3s;
+      width: 48px;
+   }
+}
+
+.p-menuitem-link {
+   justify-content: center;
+}
+
 .p-menubar-button {
    display: none;
 }

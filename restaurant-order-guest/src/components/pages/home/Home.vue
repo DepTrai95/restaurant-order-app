@@ -4,30 +4,32 @@
       <div class="logo-container">
          <img src="/src/assets/favicon/vue.svg" alt="Logo des Restaurants" width="200" height="100">
       </div>
-      <router-link v-for="item in internLink" :key="item.id" :to="item.link">
-         <Card>
-            <template #header>
-               <div class="home-p-icon">
-                  <font-awesome-icon :icon="item.icon" />
-               </div>
-            </template>
-            <template #content>
-               {{ item.category }}
-            </template>
-         </Card>
-      </router-link>
-      <a v-for="item in externLink" :key="item.id" :href="item.link">
-         <Card>
-            <template #header>
-               <div class="home-p-icon">
-                  <font-awesome-icon :icon="item.icon" />
-               </div>
-            </template>
-            <template #content>
-               {{ item.category }}
-            </template>
-         </Card>
-      </a>
+      <div class="grid-2--tablet-landscape-up">
+         <router-link class="grid-item" v-for="item in internLink" :key="item.id" :to="item.link">
+            <Card>
+               <template #header>
+                  <div class="home-p-icon">
+                     <font-awesome-icon :icon="item.icon" />
+                  </div>
+               </template>
+               <template #content>
+                  {{ item.category }}
+               </template>
+            </Card>
+         </router-link>
+         <a class="grid-item" v-for="item in externLink" :key="item.id" :href="item.link">
+            <Card>
+               <template #header>
+                  <div class="home-p-icon">
+                     <font-awesome-icon :icon="item.icon" />
+                  </div>
+               </template>
+               <template #content>
+                  {{ item.category }}
+               </template>
+            </Card>
+         </a>
+      </div>
    </div>
 </template>
 
@@ -80,6 +82,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.p-card {
+   transition: filter 0.3s ease-in-out;
+   &:hover {
+      filter: brightness(1.2);
+   }
+}
+
 .home {
    a {
       text-align: center;

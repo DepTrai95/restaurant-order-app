@@ -1,5 +1,5 @@
 <template>
-   <div class="mt-4">
+   <div class="mt-6">
       <h1 class="sr-only">Hinweise zu Allergenen</h1>
       <Card>
          <template #title>Hinweise zu Allergenen</template>
@@ -12,7 +12,7 @@
             </p>
          </template>
       </Card>
-      <Card class="mt-4">
+      <Card class="mt-6">
          <template #content>
             <h2 class="h4">Zusatzstoffe</h2>
             <div class="zusatzstoff-container">
@@ -22,7 +22,7 @@
             </div>
          </template>
       </Card>
-      <Card class="mt-4">
+      <Card class="mt-6">
          <template #content>
             <h2 class="h4">Allergene</h2>
             <div class="allergies-container">

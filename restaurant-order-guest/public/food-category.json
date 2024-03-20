@@ -1,0 +1,32 @@
+[
+  {
+    "img": "foodCategory1",
+    "category": "Unsere Specials",
+    "link": "/our-specials/"
+  },
+  {
+    "img": "foodCategory2",
+    "category": "Vorspeisen zum Teilen",
+    "link": "/sharing/"
+  },
+  {
+    "img": "foodCategory6",
+    "category": "Korean BBQ",
+    "link": "/korean-bbq/"
+  },
+  {
+    "img": "foodCategory4",
+    "category": "Reis und Nudelgerichte",
+    "link": "/rice-noodle/"
+  },
+  {
+    "img": "foodCategory5",
+    "category": "Vegetarische Gerichte",
+    "link": "/vegatarian/"
+  },
+  {
+    "img": "foodCategory3",
+    "category": "Kids Plates (für Kinder)",
+    "link": "/kids/"
+  }
+]

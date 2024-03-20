@@ -119,18 +119,20 @@
    font-size: clamp(#{$min}, #{rem-to-vw($max, $viewport)}vw, #{$max});
 }
 
-@mixin grid($items-per-line, $wrap: nowrap, $spacing: var(--content-padding), $justify: center, $grid-item: '.grid-item') {
+@mixin grid($items-per-line, $wrap: wrap, $spacing: var(--content-padding), $justify: center, $grid-item: '.grid-item') {
    display: flex;
    flex-direction: row;
    flex-wrap: $wrap;
    justify-content: $justify;
-   margin-inline-start: calc(#{$spacing} * -.5);
-   margin-inline-end: calc(#{$spacing} * -.5);
+   // margin-inline-start: calc(#{$spacing} * -.5);
+   // margin-inline-end: calc(#{$spacing} * -.5);
+   margin-inline: 1rem;
 
    >#{$grid-item} {
       min-height: 1px; // Bugfix IE10 height
-      padding-inline-start: calc(#{$spacing} * .5);
-      padding-inline-end: calc(#{$spacing} * .5);
+      // padding-inline-start: calc(#{$spacing} * .5);
+      // padding-inline-end: calc(#{$spacing} * .5);
+      padding-inline: 1rem;
       width: math.div(100%, $items-per-line);
 
       &_x2 {

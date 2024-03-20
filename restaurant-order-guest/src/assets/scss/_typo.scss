@@ -98,8 +98,9 @@ p {
 }
 
 .p-card-content {
-  @include responsive-font-size(1.6rem, 2rem);
+  @include responsive-font-size(1.8rem, 2rem);
 }
+
 
 a {
   text-decoration: none;

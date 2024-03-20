@@ -1,6 +1,6 @@
 <template>
    <div>
-      <Card class="mt-4">
+      <Card class="mt-6">
          <h1 class="sr-only">Aktuelle Öffnungszeiten</h1>
          <template #title>Aktuelle Öffnungszeiten</template>
          <template #content>
