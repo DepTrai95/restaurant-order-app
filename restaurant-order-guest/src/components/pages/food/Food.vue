@@ -2,7 +2,7 @@
    <div class="food">
       <h1 class="sr-only">Unsere Speisen</h1>
       <div class="grid-2--tablet-landscape-up grid-3--desktop-up">
-         <router-link class="grid-item" v-for="category in foodCategory" :key="category.id" :to="category.link">
+         <router-link class="grid-item" v-for="category in foodCategory" :key="category.id" :to="`/food/${category.link}`">
             <Card>
                <template #header>
                   <img :src="`/src/assets/img/food-category/${category.img}.jpeg`" alt="">

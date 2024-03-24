@@ -3,6 +3,7 @@ import { createWebHistory } from "vue-router";
 
 import Home from "./components/pages/home/Home.vue";
 import Food from "./components/pages/food/Food.vue";
+import Category from './components/pages/category/Category.vue';
 import Drinks from "./components/pages/drinks/Drinks.vue";
 import Orders from "./components/pages/orders/Orders.vue";
 import Cart from "./components/pages/cart/Cart.vue";
@@ -15,8 +16,20 @@ const router = createRouter({
   routes: [
     { path: "/", component: Home },
     { path: "/home", component: Home },
-    { path: "/food", component: Food },
+    { path: "/food", 
+      component: Food,
+    },
+    { 
+      path: '/food/:category', 
+      component: Category, 
+      props: true,
+    },
     { path: "/drinks", component: Drinks },
+    { 
+      path: '/drinks/:category', 
+      component: Category, 
+      props: true,
+    },
     { path: "/orders", component: Orders },
     { path: "/cart", component: Cart },
     { path: "/opening-hours", component: OpeningHours },
