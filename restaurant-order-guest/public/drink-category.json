@@ -1,0 +1,42 @@
+[
+  {
+    "img": "softdrinks",
+    "categoryName": "Softdrinks",
+    "link": "softdrinks/"
+  },
+  {
+    "img": "hot-drinks",
+    "categoryName": "Heißgetränke",
+    "link": "hot-drinks/"
+  },
+  {
+    "img": "cold-drinks",
+    "categoryName": "Kaltgetränke",
+    "link": "cold-drinks/"
+  },
+  {
+    "img": "ice-tea",
+    "categoryName": "Eistee",
+    "link": "ice-tea/"
+  },
+  {
+    "img": "juices",
+    "categoryName": "Saft und Smoothies",
+    "link": "juices/"
+  },
+  {
+    "img": "tea",
+    "categoryName": "Tee",
+    "link": "tea/"
+  },
+  {
+    "img": "wine-beer",
+    "categoryName": "Wein und Bier",
+    "link": "wine-beer/"
+  },
+  {
+    "img": "soju",
+    "categoryName": "Soju",
+    "link": "soju/"
+  }
+]

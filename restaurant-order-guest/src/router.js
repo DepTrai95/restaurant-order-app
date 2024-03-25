@@ -26,7 +26,8 @@ const router = createRouter({
     },
     { path: "/drinks", component: Drinks },
     { 
-      path: '/drinks/:category', 
+      path: '/drinks/:category',
+      name: Category,
       component: Category, 
       props: true,
     },
