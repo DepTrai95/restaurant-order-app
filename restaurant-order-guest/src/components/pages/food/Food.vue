@@ -1,7 +1,7 @@
 <template>
    <div class="food">
       <h1 class="sr-only">Unsere Speisen</h1>
-      <div class="grid-2--tablet-landscape-up grid-3--desktop-up">
+      <div class="grid-2--tablet-portrait-up grid-3--desktop-up">
          <router-link class="grid-item" v-for="category in foodCategory" :key="category.id" :to="`/food/${category.link}`">
             <Card>
                <template #header>
@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import { db } from '/src/firebase.js';
+import { collection, getDocs } from "firebase/firestore"; 
+
 export default {
    data() {
       return {
@@ -51,9 +54,10 @@ export default {
                "categoryName": "Kids Plates (für Kinder)",
                "link": "kids/"
             }
-         ]
+         ],
       }
-   },
+   }
+
    // async mounted() {
    //    await this.fetchCategories();
    // }, 

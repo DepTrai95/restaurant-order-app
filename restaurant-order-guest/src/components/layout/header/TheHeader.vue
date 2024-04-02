@@ -4,7 +4,7 @@
       <Menubar mobileActive="false" :model="items">
          <template #item="{ item, props }">
             <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-               <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+               <a :href="href" v-bind="props.action" @click="navigate">
                   <font-awesome-icon :icon="item.icon" />
                   <span :class="{'hidden' : isMobile }" class="ml-2">{{ item.label }}</span>
                </a>

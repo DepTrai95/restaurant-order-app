@@ -18,6 +18,9 @@
 </template>
 
 <script>
+import { db } from '/src/firebase.js';
+import { collection, getDocs } from "firebase/firestore";
+
 export default {
    data() {
       return {
@@ -62,26 +65,32 @@ export default {
                "categoryName": "Soju",
                "link": "soju/"
             }
-         ]
+         ],
+         drinks: [],
       }
    },
-   // async mounted() {
-   //    await this.fetchCategories();
-   // },
-   // methods: {
-   //    async fetchCategories() {
-   //       try {
-   //          const response = await fetch('/food-category.json');
-   //          if (!response.ok) {
-   //             throw new Error('Network response was not ok');
-   //          }
-   //          const data = await response.json();
-   //          this.foodCategory = data;
-   //       } catch (error) {
-   //          console.error('Error loading food categories:', error);
-   //       }
-   //    }
-   // }
+   async mounted() {
+      await this.fetchCategories();
+   },
+   methods: {
+      async fetchCategories() {
+         try {
+            const response = await getDocs(collection(db, "drinks"));
+            response.forEach((doc) => {
+               console.log(`${doc.id} => ${doc.data()}`);
+               const drink = {
+                  img: doc.data().img,
+                  categoryName: doc.data().categoryName,
+                  link: doc.data().link,
+               };
+               this.drinks.push(drink);
+            });
+            console.log(this.drinks);
+         } catch (error) {
+            console.error('Error loading food categories:', error);
+         }
+      }
+   }
 }
 </script>
 

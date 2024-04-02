@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.6",
+    "firebase": "^10.10.0",
     "node-sass": "^9.0.0",
     "pinia": "^2.1.7",
     "primeflex": "^3.3.1",
