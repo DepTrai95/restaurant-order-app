@@ -2,14 +2,14 @@
    <div class="drinks">
       <h1 class="sr-only">Unsere Getränke</h1>
       <div class="grid-2--tablet-portrait-up grid-3--desktop-up">
-         <router-link class="grid-item" v-for="category in drinksCategory" :key="category.id"
-            :to="`/food/${category.link}`">
+         <router-link class="grid-item" v-for="category in drinksCategories" :key="category.id"
+            :to="`/drinks/${category.path}`">
             <Card>
                <template #header>
-                  <img :src="`/src/assets/img/drink-category/${category.img}.jpeg`" alt="">
+                  <img :src="category.img" alt="">
                </template>
                <template #content>
-                  {{ category.categoryName }}
+                  {{ category.name }}
                </template>
             </Card>
          </router-link>
@@ -24,49 +24,7 @@ import { collection, getDocs } from "firebase/firestore";
 export default {
    data() {
       return {
-         drinksCategory: [
-            {
-               "img": "softdrinks",
-               "categoryName": "Softdrinks",
-               "link": "softdrinks/"
-            },
-            {
-               "img": "hot-drinks",
-               "categoryName": "Heißgetränke",
-               "link": "hot-drinks/"
-            },
-            {
-               "img": "cold-drinks",
-               "categoryName": "Kaltgetränke",
-               "link": "cold-drinks/"
-            },
-            {
-               "img": "ice-tea",
-               "categoryName": "Eistee",
-               "link": "ice-tea/"
-            },
-            {
-               "img": "juices",
-               "categoryName": "Saft und Smoothies",
-               "link": "juices/"
-            },
-            {
-               "img": "tea",
-               "categoryName": "Tee",
-               "link": "tea/"
-            },
-            {
-               "img": "wine-beer",
-               "categoryName": "Wein und Bier",
-               "link": "wine-beer/"
-            },
-            {
-               "img": "soju",
-               "categoryName": "Soju",
-               "link": "soju/"
-            }
-         ],
-         drinks: [],
+         drinksCategories: [],
       }
    },
    async mounted() {
@@ -77,15 +35,13 @@ export default {
          try {
             const response = await getDocs(collection(db, "drinks"));
             response.forEach((doc) => {
-               console.log(`${doc.id} => ${doc.data()}`);
-               const drink = {
-                  img: doc.data().img,
-                  categoryName: doc.data().categoryName,
-                  link: doc.data().link,
+               const drinkCategory = {
+                  img: doc.data().imgUrl,
+                  name: doc.data().name,
+                  path: doc.data().urlPath,
                };
-               this.drinks.push(drink);
+               this.drinksCategories.push(drinkCategory);
             });
-            console.log(this.drinks);
          } catch (error) {
             console.error('Error loading food categories:', error);
          }
@@ -95,8 +51,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.drinks {
+   margin-block: 5rem;
+}
+
+.grid-item {
+   margin-bottom: 3rem;
+}
+
 .p-card {
-   margin-top: 5rem;
    transition: filter 0.3s ease-in-out;
 
    &:hover {
@@ -104,9 +67,10 @@ export default {
    }
 }
 
-// UPDATE THIS LATER
 .p-card-header img {
-   // height: 300px;
+   height: 300px;
+   object-fit: cover;
+   width: 100%;
 }
 
 .home {

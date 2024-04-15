@@ -1,9 +1,18 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router.js';
+import { StoryblokVue, apiPlugin } from '@storyblok/vue';
 
 const app = createApp(App);
 app.use(router); 
+app.use(StoryblokVue, {
+  accessToken: 'hSfGUT3HAdLsBad99PskLwtt',
+  bridge: process.env.NODE_ENV !== 'production', // optimizes by excluding the bridge on production
+  use: [apiPlugin],
+  apiOptions: {
+     region: "eu",
+  },
+});
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';

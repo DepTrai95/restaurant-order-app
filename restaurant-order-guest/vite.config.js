@@ -24,6 +24,9 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'process.env': processEnv,
-    }
+    },
+    // server: {
+    //   https: true,
+    // },
   }
 })
