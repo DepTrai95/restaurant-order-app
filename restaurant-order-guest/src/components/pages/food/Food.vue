@@ -24,7 +24,8 @@ import { collection, getDocs } from "firebase/firestore";
 export default {
    data() {
       return {
-         foodCategories: []
+         foodCategories: [],
+         test: []
       }
    },
    async mounted() {
@@ -33,7 +34,7 @@ export default {
    methods: {
       async fetchCategories() {
          try {
-            const response = await getDocs(collection(db, "food"));
+            const response = await getDocs(collection(db, 'food'));
             response.forEach((doc) => {
                const foodCategory = {
                   img: doc.data().imgUrl,
@@ -64,6 +65,10 @@ export default {
 
    &:hover {
       filter: brightness(1.2);
+   }
+
+   @include for-phone-only {
+      margin-bottom: 3rem;
    }
 }
 

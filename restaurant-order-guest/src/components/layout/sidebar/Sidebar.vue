@@ -96,10 +96,6 @@ export default {
       }
    }
    
-   .sidebar-list .p-button {
-      padding: 0;
-   }
-   
    .p-button {
       background-color: transparent;
       border: none;
@@ -112,11 +108,19 @@ export default {
    width: 30rem;
 
    li li {
-      @include responsive-font-size(2rem, 2.4rem); 
+      @include responsive-font-size(2rem, 2.4rem);
+      padding: 0 !important;
 
+      > a,
+      > .p-button {
+         padding-block: 1.5rem;
+         padding-inline: 1rem
+      }
    }
+   
    .p-button {
       @include responsive-font-size(2rem, 2.4rem);
+      width: 100%;
    }
 }
 </style>

@@ -33,7 +33,7 @@ export default {
    methods: {
       async fetchCategories() {
          try {
-            const response = await getDocs(collection(db, "drinks"));
+            const response = await getDocs(collection(db, 'drinks'));
             response.forEach((doc) => {
                const drinkCategory = {
                   img: doc.data().imgUrl,
@@ -64,6 +64,10 @@ export default {
 
    &:hover {
       filter: brightness(1.2);
+   }
+
+   @include for-phone-only {
+      margin-bottom: 3rem;
    }
 }
 
