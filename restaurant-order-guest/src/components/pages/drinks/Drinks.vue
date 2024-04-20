@@ -33,7 +33,7 @@ export default {
    methods: {
       async fetchCategories() {
          try {
-            const response = await getDocs(collection(db, 'drinks'));
+            const response = await getDocs(collection(db, "drinks"));
             response.forEach((doc) => {
                const drinkCategory = {
                   img: doc.data().imgUrl,
@@ -55,19 +55,11 @@ export default {
    margin-block: 5rem;
 }
 
-.grid-item {
-   margin-bottom: 3rem;
-}
-
 .p-card {
    transition: filter 0.3s ease-in-out;
 
    &:hover {
       filter: brightness(1.2);
-   }
-
-   @include for-phone-only {
-      margin-bottom: 3rem;
    }
 }
 

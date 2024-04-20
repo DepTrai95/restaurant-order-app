@@ -2,7 +2,6 @@
   <the-header></the-header>
   <main>
     <div class="inner">
-
       <router-view v-slot="slotProps">
         <transition name="route" mode="out-in" @before-enter="beforeEnter">
           <component :is="slotProps.Component"></component>

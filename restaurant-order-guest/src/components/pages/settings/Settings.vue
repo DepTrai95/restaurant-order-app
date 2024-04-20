@@ -1,44 +1,86 @@
 <template>
    <div>
       <!-- upload food -->
-      <div>
-         <h2>UPLOAD FOOD CATEGORIES</h2>
-         <!-- Input-Feld für Datei-Upload -->
-         <input type="file" @change="handleFileUpload">
-         <input type="text" v-model="urlPath" placeholder="URLPath food/example">
-         <input type="text" v-model="categoryName" placeholder="Bildname">
-         <button @click="uploadCategory('food')">Speisekategorie hochladen</button>
+      <div class="upload">
+         <h2>Lade Speisekategorien hoch</h2>
+         <div class="upload__information">
+            <div class="upload__file">
+               <input type="file" id="file-upload" aria-label="Datei auswählen" @change="handleFileUpload">
+               <label for="file-upload">
+                  <font-awesome-icon icon="fa-upload" />
+                  <span>
+                     Lade ein Bild für eine Speisekategorie hoch
+                  </span>
+               </label>
+            </div>
+            <input type="text" v-model="urlPath" placeholder="URLPath food/example">
+            <input type="text" v-model="categoryName" placeholder="Bildname">
+            <button class="btn-primary" @click="uploadCategory('food')">Speisekategorie hochladen</button>
+         </div>
       </div>
       <!-- upload drinks -->
-      <div>
-         <h2>UPLOAD DRINK CATEGORIES</h2>
-         <!-- Input-Feld für Datei-Upload -->
-         <input type="file" @change="handleFileUpload">
-         <input type="text" v-model="urlPath" placeholder="URLPath drinks/example">
-         <input type="text" v-model="categoryName" placeholder="Bildname">
-         <button @click="uploadCategory('drinks')">Getränkekategorie hochladen</button>
+      <div class="upload">
+         <h2>Lade Getränkekategorien hoch</h2>
+         <div class="upload__information">
+            <div class="upload__file">
+               <input type="file" id="file-upload" aria-label="Datei auswählen" @change="handleFileUpload">
+               <label for="file-upload">
+                  <font-awesome-icon icon="fa-upload" />
+                  <span>
+                     Lade ein Bild für eine Getränkekategorie hoch
+                  </span>
+               </label>
+            </div>
+            <input type="text" v-model="urlPath" placeholder="URLPath drinks/example">
+            <input type="text" v-model="categoryName" placeholder="Bildname">
+            <button class="btn-primary" @click="uploadCategory('drinks')">Getränkekategorie hochladen</button>
+         </div>
       </div>
       <div>
-         <h2>UPLOAD FOOD IN THE CATEGORIES</h2>
-         <!-- Input-Feld für Datei-Upload -->
-         <input type="file" @change="handleFileUpload">
-         <select v-model="selectedFood">
-            <option v-for="option in foodCategories" :value="option.id" :key="option.id">{{ option.id }}</option>
-         </select>
-         <input type="text" v-model="dishName" placeholder="Speisename">
-         <input type="number" v-model="dishPrice" placeholder="Preis">
-         <button @click="uploadDish('food', selectedFood)">Speise hochladen</button>
+         <div class="upload">
+            <h2>Lade Speisen in eine Kategorie hoch</h2>
+            <div class="upload__file">
+               <input type="file" id="file-upload" aria-label="Datei auswählen" @change="handleFileUpload">
+               <label for="file-upload">
+                  <font-awesome-icon icon="fa-upload" />
+                  <span>
+                     Lade ein Bild für eine bestimmte Speise hoch
+                  </span>
+               </label>
+            </div>
+            <div class="upload__information">
+               <select v-model="selectedFood">
+                  <option v-for="option in foodCategories" :value="option.id" :key="option.id">{{ option.id }}</option>
+               </select>
+               <input type="text" v-model="dishName" placeholder="Speisename">
+               <input type="text" v-model="dishDesc" placeholder="Beschreibung Speise">
+               <input type="number" v-model="dishPrice" placeholder="Preis">
+               <button class="btn-primary" @click="uploadDish('food', selectedFood)">Speise hochladen</button>
+            </div>
+         </div>
       </div>
       <div>
-         <h2>UPLOAD DRINKS IN THE CATEGORIES</h2>
-         <!-- Input-Feld für Datei-Upload -->
-         <input type="file" @change="handleFileUpload">
-         <select v-model="selectedDrink">
-            <option v-for="option in drinkCategories" :value="option.id" :key="option.id">{{ option.id }}</option>
-         </select>
-         <input type="text" v-model="dishName" placeholder="Getränkename">
-         <input type="number" v-model="dishPrice" placeholder="Preis">
-         <button @click="uploadDish('drinks', selectedDrink)">Getränk hochladen</button>
+         <div class="upload">
+            <h2>Lade Getränke in eine Kategorie hoch</h2>
+            <div class="upload__information">
+               <div class="upload__file">
+                  <input type="file" id="file-upload" aria-label="Datei auswählen" @change="handleFileUpload">
+                  <label for="file-upload">
+                     <font-awesome-icon icon="fa-upload" />
+                     <span>
+                        Lade ein Bild für ein bestimmtes Getränk hoch
+                     </span>
+                  </label>
+               </div>
+               <select v-model="selectedDrink">
+                  <option v-for="option in drinkCategories" :value="option.id" :key="option.id">{{ option.id }}</option>
+               </select>
+               <input type="text" v-model="dishName" placeholder="Getränkename">
+               <input type="text" v-model="dishDesc" placeholder="Beschreibung Getränk">
+               <input type="number" v-model="dishPrice" placeholder="Preis">
+               <button class="btn-primary" @click="uploadDish('drinks', selectedDrink)">Getränk hochladen</button>
+            </div>
+         </div>
       </div>
    </div>
 </template>
@@ -55,6 +97,7 @@ export default {
          categoryName: null,
          urlPath: null,
          dishName: null,
+         dishDesc: null,
          dishPrice: null,
          foodCategories: [],
          drinkCategories: [],
@@ -152,6 +195,7 @@ export default {
             await setDoc(docRef, {
                name: this.dishName,
                price: this.dishPrice,
+               description: this.dishDesc,
                imgUrl: imgUrl,
                urlPath: urlPath,
                createdAt: serverTimestamp(),
@@ -169,5 +213,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.upload {
+   background-color: $color-background-card;
+   border-radius: 5px;
+   margin-block: 3rem;
+   padding: 2rem;
 
+   &__information {
+      display: flex;
+      flex-direction: column;
+
+      input,
+      select,
+      .btn-primary {
+         background-color: transparent;
+         border: 1px solid grey;
+         border-radius: 5px;
+         margin-block: 0.75rem;
+         outline: none;
+         padding: 1rem;
+         transition: border-color .3s ease-in-out;
+         
+         &:hover,
+         &:focus {
+            border-color: $color-primary;
+         }
+      }
+
+      .btn-primary {
+         background-color: $color-primary;
+         border: 1px solid $color-primary;
+         border-radius: 5px;
+      }
+
+   }
+   .upload__file {
+      margin-block: 0.75rem;
+
+      input {
+         display: none;
+      }
+
+      > label {
+         border: 3px dashed $color-primary;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         padding: 1.5rem;
+         cursor: pointer;
+         width: 100%;
+
+         .fa-upload {
+            height: 24px;
+            width: 24px;
+            margin-bottom: 1.5rem;
+         }
+
+         span {
+            font-size: 1.5rem;
+         }
+      }
+   }
+}
 </style>

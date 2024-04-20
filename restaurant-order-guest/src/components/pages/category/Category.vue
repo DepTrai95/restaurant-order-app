@@ -1,16 +1,25 @@
 <template>
    <div>
       <h1>{{ categoryName }}</h1>
+      <div class="grid-2--tablet-portrait-up grid-3--desktop-up">
+         <menu-item v-for="dish in dishes" :key="dish.id" :dish="dish"></menu-item>
+      </div>
    </div>
 </template>
 
 <script>
+import { db } from '/src/firebase.js';
+import { collection, getDocs } from "firebase/firestore";
+import MenuItem from '../../layout/menu-item/MenuItem.vue';
+
 export default {
+   components: {
+      MenuItem
+   },
    props: ['category'],
    data () {
       return {
-         foodCategory: [],
-         drinkCategory: [],
+         dishes: [],
       }
    },
    computed: {
@@ -18,37 +27,27 @@ export default {
          return this.category.replace(/-/g, ' ').replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
       }
    },
-   async created() {
-      await this.fetchData();
+   async mounted() {
+      await this.fetchDishes();
    },
    methods: {
-      // async fetchData() {
-      //    try {
-      //       if (this.$route.path.startsWith('/food')) {
-      //          const response = await fetch('/food-category.json');
-      //          if (!response.ok) {
-      //             throw new Error('Network response was not ok');
-      //          }
-      //          const data = await response.json();
-      //          this.foodCategory = data;
-      //       } else if (this.$route.path.startsWith('/drinks')) {
-      //          const response = await fetch('/drink-category.json');
-      //          if (!response.ok) {
-      //             throw new Error('Network response was not ok');
-      //          }
-      //          const data = await response.json();
-      //          this.drinkCategory = data;
-      //       }
-      //    } catch (error) {
-      //       console.error('Error loading category data:', error);
-      //    }
-      // },
-      getCategoryName() {
-         // Find category name based on the route
-         const categoryData = this.$route.path.startsWith('/food') ? this.foodCategory : this.drinkCategory;
-         const matchingCategory = categoryData.find(item => item.link === this.category);
-         return matchingCategory ? matchingCategory.categoryName : '';
-      }
+      async fetchDishes() {
+         try {
+            const path = this.$route.path.split('/')[1] + '/' + this.category; //e.g. food/korean-bbq
+            const res = await getDocs(collection(db, path, 'dishes'));
+            res.forEach((doc) => {
+               const items = {
+                  id: doc.data().name,
+                  name: doc.data().name,
+                  imgUrl: doc.data().imgUrl,
+                  price: doc.data().price,
+               };
+               this.dishes.push(items);
+            });
+         } catch (error) {
+            console.error('Error loading dishes:', error);
+         }
+      },
    },
    watch: {
       '$route'() {

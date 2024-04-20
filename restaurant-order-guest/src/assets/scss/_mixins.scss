@@ -126,12 +126,10 @@
    justify-content: $justify;
    // margin-inline-start: calc(#{$spacing} * -.5);
    // margin-inline-end: calc(#{$spacing} * -.5);
-   margin-inline: 1rem;
+   margin-inline: -1rem;
 
    >#{$grid-item} {
       min-height: 1px; // Bugfix IE10 height
-      // padding-inline-start: calc(#{$spacing} * .5);
-      // padding-inline-end: calc(#{$spacing} * .5);
       padding-inline: 1rem;
       width: math.div(100%, $items-per-line);
 

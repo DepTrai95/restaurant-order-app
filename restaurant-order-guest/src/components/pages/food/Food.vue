@@ -56,10 +56,6 @@ export default {
    margin-block: 5rem;
 }
 
-.grid-item {
-   margin-bottom: 3rem;
-}
-
 .p-card {
    transition: filter 0.3s ease-in-out;
 
