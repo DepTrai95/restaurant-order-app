@@ -4,7 +4,7 @@
       <div class="logo-container">
          <img src="/src/assets/favicon/vue.svg" alt="Logo des Restaurants" width="200" height="100">
       </div>
-      <div class="grid-2--tablet-landscape-up">
+      <div class="grid-2--tablet-portrait-up">
          <router-link class="grid-item" v-for="item in internLink" :key="item.id" :to="item.link">
             <Card>
                <template #header>
@@ -82,6 +82,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.grid-item {
+   margin-bottom: 0;
+}
+
 .p-card {
    transition: filter 0.3s ease-in-out;
    &:hover {
@@ -103,8 +107,12 @@ export default {
    }
 
    .p-card {
-      border-radius: 3rem;
-      margin-block: 3rem;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+
+      @include for-tablet-portrait-up {
+         margin-bottom: 3rem;
+      }
    }
 
    .home-p-icon {

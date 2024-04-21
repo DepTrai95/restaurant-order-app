@@ -189,12 +189,13 @@ export default {
          )
 
          try {
+            const price = parseFloat(this.dishPrice).toFixed(2);
             const imgUrl = await getDownloadURL(uploadTask.snapshot.ref);
             const urlPath = this.dishName.toLowerCase();
             const docRef = doc(db, category, selectedItem, 'dishes', urlPath);
             await setDoc(docRef, {
                name: this.dishName,
-               price: this.dishPrice,
+               price: price,
                description: this.dishDesc,
                imgUrl: imgUrl,
                urlPath: urlPath,
@@ -244,6 +245,14 @@ export default {
          background-color: $color-primary;
          border: 1px solid $color-primary;
          border-radius: 5px;
+         cursor: pointer;
+         transition: background-color .3s, border-color .3s;
+
+         &:hover,
+         &:focus {
+            background-color: $color-primary-dark;
+            border-color: $color-primary-dark;
+         }
       }
 
    }
@@ -255,14 +264,20 @@ export default {
       }
 
       > label {
+         align-items: center;
          border: 3px dashed $color-primary;
+         cursor: pointer;
          display: flex;
          flex-direction: column;
-         align-items: center;
          justify-content: center;
          padding: 1.5rem;
-         cursor: pointer;
+         transition: border-color .3s, background-color .3s;
          width: 100%;
+
+         &:hover {
+            background-color: #2e3744;
+            border-color: $color-primary-dark;
+         }
 
          .fa-upload {
             height: 24px;

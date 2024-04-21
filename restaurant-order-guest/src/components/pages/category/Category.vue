@@ -1,7 +1,7 @@
 <template>
    <div>
       <h1>{{ categoryName }}</h1>
-      <div class="grid-2--tablet-portrait-up grid-3--desktop-up">
+      <div class="grid-2--tablet-landscape-up">
          <menu-item v-for="dish in dishes" :key="dish.id" :dish="dish"></menu-item>
       </div>
    </div>
@@ -39,6 +39,7 @@ export default {
                const items = {
                   id: doc.data().name,
                   name: doc.data().name,
+                  description: doc.data().description,
                   imgUrl: doc.data().imgUrl,
                   price: doc.data().price,
                };
