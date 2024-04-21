@@ -69,6 +69,8 @@ export default {
 }
 
 .p-card-header img {
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
    height: 300px;
    object-fit: cover;
    width: 100%;

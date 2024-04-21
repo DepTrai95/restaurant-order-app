@@ -10,9 +10,11 @@
     </div>
   </main>
   <the-footer></the-footer>
+  <DynamicDialog />
 </template>
 
 <script setup>
+import DynamicDialog from 'primevue/dynamicdialog';
 import TheHeader from './components/layout/header/TheHeader.vue';
 import TheFooter from './components/layout/footer/TheFooter.vue';
 </script>

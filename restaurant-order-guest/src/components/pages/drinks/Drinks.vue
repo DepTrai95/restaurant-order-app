@@ -58,12 +58,18 @@ export default {
 .p-card {
    transition: filter 0.3s ease-in-out;
 
+   @include for-phone-only {
+      margin-bottom: 3rem;
+   }
+
    &:hover {
       filter: brightness(1.2);
    }
 }
 
 .p-card-header img {
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
    height: 300px;
    object-fit: cover;
    width: 100%;

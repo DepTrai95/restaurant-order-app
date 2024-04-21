@@ -114,13 +114,13 @@ export default {
       > a,
       > .p-button {
          padding-block: 1.5rem;
-         padding-inline: 1rem
+         padding-inline: 1rem;
+         width: 100%;
       }
    }
    
    .p-button {
       @include responsive-font-size(2rem, 2.4rem);
-      width: 100%;
    }
 }
 </style>

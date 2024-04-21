@@ -31,14 +31,14 @@ import Button from 'primevue/button';
 import Card from 'primevue/card';
 import Menubar from 'primevue/menubar'; 
 import Sidebar from 'primevue/sidebar';
-
+import DialogService from 'primevue/dialogservice';
 
 app.use(PrimeVue, {
    ripple: true,
 });
+app.use(DialogService);
 app.component('Button', Button);
 app.component('Card', Card);
 app.component('Menubar', Menubar);
 app.component('Sidebar', Sidebar);
-
 app.mount('#app');

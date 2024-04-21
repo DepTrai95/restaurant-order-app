@@ -8,18 +8,30 @@
             <h3 class="menu-item__name">{{ dish.name }}</h3>
             <div class="menu-item__description">{{ dish.description }}</div>
             <div class="menu-item__price">{{ dish.price }}€</div>
-            <button class="menu-item__button">
+            <button class="menu-item__button" @click="openAddToCartModal">
                <font-awesome-icon icon="fa-plus"/>
             </button>
          </div>
       </div>
    </div>
+
 </template>
 
 <script> 
-   export default {
-      props: ['dish']
-   }
+export default {
+   props: ['dish'],
+}
+</script>
+
+<script setup>
+import AddOn from '../../layout/add-on-modal/AddOn.vue';
+import { useDialog } from 'primevue/usedialog';
+
+const dialog = useDialog();
+
+const openAddToCartModal = () => {
+   dialog.open(AddOn, {});
+}
 </script>
 
 <style lang="scss" scoped>
