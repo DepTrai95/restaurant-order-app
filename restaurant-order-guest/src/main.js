@@ -32,6 +32,8 @@ import Card from 'primevue/card';
 import Menubar from 'primevue/menubar'; 
 import Sidebar from 'primevue/sidebar';
 import DialogService from 'primevue/dialogservice';
+import Dialog from 'primevue/dialog';
+
 
 app.use(PrimeVue, {
    ripple: true,
@@ -41,4 +43,5 @@ app.component('Button', Button);
 app.component('Card', Card);
 app.component('Menubar', Menubar);
 app.component('Sidebar', Sidebar);
+app.component('Dialog', Dialog);
 app.mount('#app');
