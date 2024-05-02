@@ -33,6 +33,7 @@ import Menubar from 'primevue/menubar';
 import Sidebar from 'primevue/sidebar';
 import DialogService from 'primevue/dialogservice';
 import Dialog from 'primevue/dialog';
+import Image from 'primevue/image';
 
 
 app.use(PrimeVue, {
@@ -44,4 +45,5 @@ app.component('Card', Card);
 app.component('Menubar', Menubar);
 app.component('Sidebar', Sidebar);
 app.component('Dialog', Dialog);
+app.component('Image', Image);
 app.mount('#app');

@@ -37,11 +37,13 @@ const openAddToCartModal = (dish) => {
             width: '50vw',
          },
          breakpoints: {
-            '960px': '75vw',
-            '640px': '90vw'
+            '1200px': '75vw',
+            '900px': '85vw',
+            '600px': '90vw',
          },
          modal: true,
          data: {
+            id: dish.id,
             name: dish.name,
             img: dish.imgUrl,
             description: dish.description,
@@ -92,19 +94,21 @@ const openAddToCartModal = (dish) => {
    }
 
    &__description {
-      flex: 1 0 auto;
       font-size: 1.5rem;
       font-weight: 300;
       // hide too long texts
+      -webkit-line-clamp: 3;
       overflow: hidden;
+      text-overflow: ellipsis;
+      /* WebKit-Browser */
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+   }
 
-      @include for-tablet-portrait-down {
-         text-overflow: ellipsis;
-         /* WebKit-Browser */
-         display: -webkit-box;
-         -webkit-box-orient: vertical;
-         -webkit-line-clamp: 3;
-      }
+   &__price {
+      align-items: flex-end;
+      display: flex;
+      flex-grow: 1;
    }
 
    &__button {

@@ -1,16 +1,18 @@
 <template>
    <header class="header">
-      <Sidebar></Sidebar>
-      <Menubar mobileActive="false" :model="items">
-         <template #item="{ item, props }">
-            <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
-               <a :href="href" v-bind="props.action" @click="navigate">
-                  <font-awesome-icon :icon="item.icon" />
-                  <span :class="{'hidden' : isMobile }" class="ml-2">{{ item.label }}</span>
-               </a>
-            </router-link>
-         </template>
-      </Menubar>
+      <nav aria-label="Hauptnavigation">
+         <Sidebar></Sidebar>
+         <Menubar mobileActive="false" :model="items">
+            <template #item="{ item, props }">
+               <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
+                  <a :href="href" v-bind="props.action" @click="navigate">
+                     <font-awesome-icon :icon="item.icon" />
+                     <span :class="{'hidden' : isMobile }" class="ml-2">{{ item.label }}</span>
+                  </a>
+               </router-link>
+            </template>
+         </Menubar>
+      </nav>
    </header>
 </template>
 

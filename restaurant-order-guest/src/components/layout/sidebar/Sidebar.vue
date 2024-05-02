@@ -113,9 +113,16 @@ export default {
 
       > a,
       > .p-button {
+         border: 1px solid transparent;
+         border-radius: 5px;
          padding-block: 1.5rem;
          padding-inline: 1rem;
          width: 100%;
+
+         &:focus,
+         &:focus-visible {
+            border-color: $color-primary;
+         }
       }
    }
    
