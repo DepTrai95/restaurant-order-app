@@ -34,7 +34,7 @@ import Sidebar from 'primevue/sidebar';
 import DialogService from 'primevue/dialogservice';
 import Dialog from 'primevue/dialog';
 import Image from 'primevue/image';
-
+import Checkbox from 'primevue/checkbox';
 
 app.use(PrimeVue, {
    ripple: true,
@@ -46,4 +46,5 @@ app.component('Menubar', Menubar);
 app.component('Sidebar', Sidebar);
 app.component('Dialog', Dialog);
 app.component('Image', Image);
+app.component('Checkbox', Checkbox);
 app.mount('#app');

@@ -10,6 +10,16 @@
             {{ params && params.description }}
          </div>
          <div class="separator-line"></div>
+         <div class="dialog__menu-item__addons">
+            <div v-for="addon in addons" :key="addon.name" class="dialog__menu-item__addons__item flex align-items-center">
+               <Checkbox v-model="selectedAddons" :inputId="addon.name" :name="addon.name" :value="addon.price" />
+               <label :for="addon.name">
+                  <span>{{ addon.name }}</span>
+                  <span>+{{ parseInt(addon.price).toFixed(2) }}€</span>
+               </label>
+            </div>
+         </div>
+         <div class="separator-line"></div>
          <div class="dialog__menu-item__amount">
             <div class="dialog__menu-item__action">
                <button aria-label="Verringere Anzahl" class="dialog__menu-item__amount__decrease"
@@ -26,15 +36,15 @@
                <span class="dialog__menu-item__price__info-small">inkl. MwSt.</span>
             </div>
          </div>
+         <div class="dialog__menu-item__note">
+            <input class="form-control" type="text" v-model="orderNote" placeholder="Anmerkungen">
+            <font-awesome-icon icon="fa-x" v-if="orderNote" @click="clearInput" class="clear-icon" />
+         </div>
          <div class="dialog__menu-item__action">
             <button class="btn-primary">
                <font-awesome-icon icon="fa-cart-arrow-down" />
                <span>Zum Korb hinzufügen</span>
             </button>
-         </div>
-         <div class="dialog__menu-item__note">
-            <input class="form-control" type="text" v-model="orderNote" placeholder="Anmerkungen">
-            <font-awesome-icon icon="fa-x" v-if="orderNote" @click="clearInput" class="clear-icon" />
          </div>
       </div>
    </div>
@@ -46,6 +56,14 @@ const dialogRef = inject('dialogRef');
 const params = ref(null);
 const amount = ref(1);
 const orderNote = ref(null);
+
+const addons = ref([
+   { name: 'Reis', price: 3.00 },
+   { name: 'Süßkartoffelpommes', price: 4.99 },
+   { name: 'Kimchi', price: 2.99 }
+]);
+
+const selectedAddons = ref([]);
 
 function decreaseAmount() {
    if (amount.value > 1) {
@@ -92,6 +110,13 @@ onMounted(() => {
 .p-image-mask {
    --maskbg: rgba(0, 0, 0, 0.5);
 }
+
+.p-checkbox .p-checkbox-box {
+   border-radius: 3px;
+   height: 18px;
+   margin: auto;
+   width: 18px;
+}
 </style>
 
 <style lang="scss" scoped>
@@ -126,6 +151,7 @@ onMounted(() => {
 }
 
 .dialog__menu-item__note {
+   margin-block: 1.5rem;
    position: relative;
 }
 
@@ -156,7 +182,7 @@ onMounted(() => {
 
 .separator-line {
    border: 1px solid $color-primary;
-   margin-block: 1rem;
+   margin-block: 1.5rem;
 }
 
 .dialog__menu-item {
@@ -179,11 +205,26 @@ onMounted(() => {
       font-weight: 300;
    }
 
+   &__addons {
+
+      &__item {
+         margin-bottom: .5rem;
+      }
+
+      label {
+         @include responsive-font-size(1.5rem, 1.6rem);
+         display: flex;
+         font-weight: 400;
+         justify-content: space-between;
+         padding-inline: 1rem;
+         width: 100%;
+      }
+   }
+
    &__action {
       align-items: center;
       display: flex;
       gap: 1rem;
-      margin-block: 1rem;
    }
 
    &__amount__decrease,
