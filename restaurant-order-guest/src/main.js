@@ -1,18 +1,11 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router.js';
-import { StoryblokVue, apiPlugin } from '@storyblok/vue';
-
 const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
 app.use(router); 
-app.use(StoryblokVue, {
-  accessToken: 'hSfGUT3HAdLsBad99PskLwtt',
-  bridge: process.env.NODE_ENV !== 'production', // optimizes by excluding the bridge on production
-  use: [apiPlugin],
-  apiOptions: {
-     region: "eu",
-  },
-});
 
 // Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -23,7 +16,6 @@ library.add(fas, faFacebook, faInstagram, faTiktok);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 // PrimeVue
-// import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import 'primevue/resources/themes/lara-dark-pink/theme.css';
 import PrimeVue from 'primevue/config';

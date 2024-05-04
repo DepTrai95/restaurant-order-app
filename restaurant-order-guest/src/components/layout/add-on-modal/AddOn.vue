@@ -11,8 +11,9 @@
          </div>
          <div class="separator-line"></div>
          <div class="dialog__menu-item__addons">
-            <div v-for="addon in addons" :key="addon.name" class="dialog__menu-item__addons__item flex align-items-center">
-               <Checkbox v-model="selectedAddons" :inputId="addon.name" :name="addon.name" :value="addon.price" />
+            <div v-for="addon in addons" :key="addon.name"
+               class="dialog__menu-item__addons__item flex align-items-center">
+               <Checkbox v-model="selectedAddons" :inputId="addon.name" :name="addon.name" :value="addon" />
                <label :for="addon.name">
                   <span>{{ addon.name }}</span>
                   <span>+{{ parseInt(addon.price).toFixed(2) }}€</span>
@@ -41,7 +42,7 @@
             <font-awesome-icon icon="fa-x" v-if="orderNote" @click="clearInput" class="clear-icon" />
          </div>
          <div class="dialog__menu-item__action">
-            <button class="btn-primary">
+            <button @click="addToCart(amount, selectedAddons, orderNote)" class="btn-primary">
                <font-awesome-icon icon="fa-cart-arrow-down" />
                <span>Zum Korb hinzufügen</span>
             </button>
@@ -51,7 +52,10 @@
 </template>
 
 <script setup>
-import { ref, inject, computed, onMounted } from 'vue';
+import { ref, inject, computed, onMounted, watch } from 'vue';
+import { cartStore } from '../../../store';
+import { storeToRefs } from 'pinia';
+
 const dialogRef = inject('dialogRef');
 const params = ref(null);
 const amount = ref(1);
@@ -65,18 +69,20 @@ const addons = ref([
 
 const selectedAddons = ref([]);
 
-function decreaseAmount() {
+const decreaseAmount = () => {
    if (amount.value > 1) {
       amount.value--;
    }
 }
 
-function increaseAmount() {
+const increaseAmount = () => {
    amount.value++;
 }
 
 const totalPrice = computed(() => {
-   return parseFloat(amount.value * params.value.price).toFixed(2);
+   const priceDish = amount.value * params.value.price;
+   const priceAddons = selectedAddons.value.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0);
+   return parseFloat(priceDish + priceAddons).toFixed(2);
 });
 
 const clearInput = () => {
@@ -86,6 +92,32 @@ const clearInput = () => {
 onMounted(() => {
   params.value = dialogRef?.value?.options?.props?.data;
 });
+
+const store = cartStore();
+const addToCart = (amount, addons, notes) => {
+   const item = {
+      id: params.value.id,
+      name: params.value.name, 
+      quantity: amount,
+      price: params.value.price,
+      note: notes,
+      addons: addons,
+   }
+   store.addToStore(item);
+}
+
+// const { cart } = storeToRefs(store);
+// watch(cart, () => {
+//    debugger
+//    console.log('isLoggedIn ref changed, do something!')
+// })
+// watch(cart, 
+//    (state) => {
+//       // localStorage.setItem('piniaState', JSON.stringify(state))
+//       console.log('isLoggedIn ref changed, do something!')
+//    },
+//    { deep: true }
+// )
 </script>
 
 <style lang="scss">
