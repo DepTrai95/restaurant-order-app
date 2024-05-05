@@ -8,6 +8,9 @@
                   <a :href="href" v-bind="props.action" @click="navigate">
                      <font-awesome-icon :icon="item.icon" />
                      <span :class="{'hidden' : isMobile }" class="ml-2">{{ item.label }}</span>
+                     <span v-if="item.label === 'Warenkorb'" :class="{ 'items-in-cart': cartStore.cart.length > 0}">
+                        {{ cartStore.cart.length > 0 ? cartStore.cart.reduce((total, item) => total + item.quantity, 0) : '' }}
+                     </span>
                   </a>
                </router-link>
             </template>
@@ -18,6 +21,8 @@
 
 <script>
 import Sidebar from '../sidebar/Sidebar.vue';
+import { cartStore } from '../../../store';
+import { mapStores } from 'pinia';
 
 export default {
    components: {
@@ -55,6 +60,9 @@ export default {
             }
          ]
       };
+   },
+   computed: {
+      ...mapStores(cartStore),
    },
    methods: {
       throttledCheckIsMobile() {
@@ -134,5 +142,19 @@ export default {
       position: relative;
       width: unset;
    }
+}
+
+.items-in-cart {
+   align-items: center;
+   background-color: $color-body;
+   border-radius: 100%;
+   display: flex;
+   font-size: 1.2rem;
+   height: 1.8rem;
+   justify-content: center;
+   left: 0;
+   position: absolute;
+   top: 0;
+   width: 1.8rem;
 }
 </style>

@@ -102,22 +102,19 @@ const addToCart = (amount, addons, notes) => {
       price: params.value.price,
       note: notes,
       addons: addons,
+      timestamp: Date.now(),
    }
    store.addToStore(item);
 }
 
-// const { cart } = storeToRefs(store);
-// watch(cart, () => {
-//    debugger
-//    console.log('isLoggedIn ref changed, do something!')
-// })
-// watch(cart, 
-//    (state) => {
-//       // localStorage.setItem('piniaState', JSON.stringify(state))
-//       console.log('isLoggedIn ref changed, do something!')
-//    },
-//    { deep: true }
-// )
+const { cart } = storeToRefs(store);
+watch(cart, (state) => {   
+      // persist the whole state to the local storage whenever it changes
+      const cartObject = { value: { items: state }};
+      localStorage.setItem('cartItems', JSON.stringify(cartObject));
+   },
+   { deep: true }
+)
 </script>
 
 <style lang="scss">
