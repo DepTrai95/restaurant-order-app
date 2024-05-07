@@ -11,10 +11,15 @@
                </tr>
             </thead>
             <tbody>
-               <tr v-for="item in cartStore.cart" :key="item.id">
-                  <td>{{ item.name }}</td>
+               <tr class="cart-item" v-for="item in cartStore.cart" :key="item.id">
                   <td>
-                     <span class="cart-item">
+                     <span class="cart-item__name">{{ item.name }}</span>
+                     <span class="cart-item__addon" v-for="addon in item.addons" :key="addon">
+                        {{ addon.name }} - {{ addon.price }} €
+                     </span>
+                  </td>
+                  <td>
+                     <span class="cart-item__amount">
                         <button aria-label="Verringere Anzahl" class="cart-item__amount__decrease"
                            @click="decreaseAmount">
                            <font-awesome-icon icon="fa-minus" />
@@ -25,12 +30,14 @@
                         </button>
                      </span>
                   </td>
-                  <td>{{ item.price }} €</td>
+                  <td>
+                     <span class="cart-item__price">{{ sumProduct(item.price, item.addons) }} €</span>
+                  </td>
                </tr>
             </tbody>
             <tfoot>
                <tr>
-                  <td colspan="3" scope="row">Gesamt: {{ totalPrice }} €</td>
+                  <td colspan="3" scope="row">Gesamt: {{ sumCart() }} €</td>
                </tr>
                <tr>
                   <td colspan="3" scope="row">Alle Preisangaben inkl. MwSt.</td>
@@ -49,13 +56,23 @@ export default {
    data() {
       return {
          totalPrice: 0,
+         totalProductPrices: [],
       };
    },
    computed: {
       ...mapStores(cartStore),
-   },
-   mounted() {
-      // this.totalPrice = this.$store.totalPrice;
+      sumProduct() {
+         return (price, addons) => {
+            const sum = addons.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0) + parseFloat(price);
+            this.totalProductPrices.push(sum);
+            return parseFloat(sum).toFixed(2);
+         }
+      },
+      sumCart() {
+         return () => {
+            return this.totalProductPrices.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+         }
+      }
    },
 }
 </script>
@@ -74,11 +91,13 @@ thead tr,
 tbody tr {
    >:nth-child(2) {
       text-align: center;
+      vertical-align: top;
       width: 150px;
    }
 
    >:nth-child(3) {
       text-align: end;
+      vertical-align: top;
       width: 150px;
    }
 
@@ -112,16 +131,22 @@ tfoot {
    }
 }
 
+.cart-item__addon,
+.cart-item__addon__price {
+   @include responsive-font-size(1.4rem, 1.6rem);
+   display: flex;
+   flex-direction: column;
+   padding: 1rem 1rem 0;
+}
 
-
-.cart-item {
+.cart-item__amount {
    align-items: center;
    display: flex;
    justify-content: center;
    gap: 2rem;
 
-   &__amount__decrease,
-   &__amount__increase {
+   &__decrease,
+   &__increase {
       background-color: $color-primary;
       border: 1px solid $color-primary;
       border-radius: 100%;

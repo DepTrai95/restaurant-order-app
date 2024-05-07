@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 export const cartStore = defineStore('cart', {
   state: () => {
       return { 
-         cart: [],
+         cart: JSON.parse(localStorage.getItem('cartItems'))?.value?.items || [],
       }
   },
   getters: {}, 
@@ -28,4 +28,5 @@ export const cartStore = defineStore('cart', {
          }
       },
   },
+//   persists: true,
 })

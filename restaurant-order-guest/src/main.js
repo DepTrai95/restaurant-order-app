@@ -40,12 +40,5 @@ app.component('Dialog', Dialog);
 app.component('Image', Image);
 app.component('Checkbox', Checkbox);
 
-//Import Pinia State from localStorage
-import { cartStore } from './store.js';
-const store = cartStore();
-const savedCartItems = JSON.parse(localStorage.getItem('cartItems')).value.items;
-if (savedCartItems) {
-  store.cart = savedCartItems;
-}
 
 app.mount('#app');
