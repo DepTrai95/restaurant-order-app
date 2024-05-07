@@ -40,5 +40,4 @@ app.component('Dialog', Dialog);
 app.component('Image', Image);
 app.component('Checkbox', Checkbox);
 
-
 app.mount('#app');
