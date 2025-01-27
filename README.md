@@ -1,4 +1,4 @@
-# restaurant-order-app
+# restaurant-order-app (unfinished/obsolete)
 
 - This is an unfinished project, the idea was an ordering-application a lot of people might've seen in restaurants/café's using Vue in the Frontend and Firebase as PaaS as at the time of starting this hobby project I had absolutely no experience in Backend-Development at all. 
 - Unfortunately the Document-based Database of Firestore is not useful/practicable for this kind of application and I started this project anew.
